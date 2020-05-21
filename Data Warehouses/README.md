@@ -29,7 +29,7 @@ Launch a cluster as explained in `ExploreDataStructures.ipynb`. Note that the co
 ### 2) Execute scripts
 Launch a console and run:
 - `python create_tables.py` 
-- `etl.py` 
+- `python etl.py` 
 
 
 
