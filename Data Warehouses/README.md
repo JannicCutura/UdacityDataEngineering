@@ -24,12 +24,12 @@ Dimension Tables
 
 ## Run the scripts:
 ### 1) Create database cluster on AWS.
-I did so replicating the IaC lecture. My code for this is provided in `ExploreDataStructures.ipynb` but the config file is NOT provided as to not spoil my AWS credentials. The ARN And DWH role are copied to dwh.cfg here. The Juypter file is not meant as graded material for the submission, but just to demonstrate my approach to the reviewer. 
+Launch a cluster as explained in `ExploreDataStructures.ipynb`. Note that the config file `dwh_local.cfg` is NOT provided as to not spoil my AWS credentials. The ARN And DWH role are copied to `dwh.cfg here`. The Juypter file is for exploration. 
 
 ### 2) Execute scripts
 Launch a console and run:
 - `python create_tables.py` 
-- `ètl.py` 
+- `etl.py` 
 
 
 
