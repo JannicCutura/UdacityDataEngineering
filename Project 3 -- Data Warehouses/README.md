@@ -1,8 +1,8 @@
 # Data Warehouse for Sparkify
-This project uses IaC on AWS to create a database for analyizing user activity on Sparkify by converting multiple log data files into a relational database using PostGresSQL.  
+This project uses IaC on AWS to create a datawarehosue for analyizing user activity on Sparkify by converting multiple log data files into a relational database using PostGreSQL.  
 
 ## Input Data
-The input data consists of a set of json files storing information on the song and artist and a second set of json files contain log information on user activity (such as when they list, the sequence of songs, the browser they use,...). The data is stored on AWS S3. 
+The input data consists of a set of json files storing information on the song and artist and a second set of json files contain log information on user activity (such as when they listen, the sequence of songs, the browser they use,...). The data is stored on AWS S3. 
 
 ## ETL Pipeline
 The ETL pipeline is based on two steps. First, we create empty SQL tables. Second, we load data into it. To do so, we launch a redshift database as laid out in `ExploreDataStructures.ipynb`. Here, we also explore the data manually. Next, we start the console and execute `python create_tables.py`. This will delete tables if any exist and create empty SQL Tables. Running `python etl.py` will populate those. The SQL queries for both `python create_tables.py` and `python etl.py` are stored as doc strings in `sql_queries.py`. The raw data is first copied into staging tables. From there, it is loaded into the star schema SQL tables, with one fact table containing the individual song plays and 4 dimension tables:
@@ -32,6 +32,10 @@ Launch a console and run:
 - `python etl.py` 
 
 
+## Authors 
+[Jannic Cutura](https://www.linkedin.com/in/dr-jannic-alexander-cutura-35306973/), 2020
+
+[![Python](https://img.shields.io/static/v1?label=made%20with&message=Python&color=blue&style=for-the-badge&logo=Python&logoColor=white)](#)
 
 
 
