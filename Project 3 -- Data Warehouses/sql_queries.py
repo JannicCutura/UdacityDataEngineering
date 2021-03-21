@@ -3,7 +3,7 @@ import configparser
 
 # CONFIG
 config = configparser.ConfigParser()
-config.read('dwh.cfg')
+config.read('dwh.cfg') # the config file is not tracked by git to not accidentally spoil my credentials
 
 # GLOBAL VARIABLES
 LOG_DATA = config.get("S3","LOG_DATA")
@@ -24,8 +24,7 @@ time_table_drop = "DROP TABLE IF EXISTS time_table"
 
 # Staging Events Table
 staging_events_table_create= ("""
-CREATE TABLE IF NOT EXISTS staging_events_table
-(
+CREATE TABLE IF NOT EXISTS staging_events_table (
 artist          VARCHAR,
 auth            VARCHAR, 
 firstName       VARCHAR,
@@ -48,14 +47,14 @@ userId          INTEGER
 """)
 
 # Copy to staging events table
-staging_events_copy = """
-    COPY staging_events_table FROM {}
-    CREDENTIALS 'aws_iam_role={}'
+staging_events_copy = f"""
+    COPY staging_events_table FROM {LOG_DATA}
+    CREDENTIALS 'aws_iam_role={IAM_ROLE}'
     COMPUPDATE OFF region 'us-west-2'
     TIMEFORMAT as 'epochmillisecs'
     TRUNCATECOLUMNS BLANKSASNULL EMPTYASNULL
-    FORMAT AS JSON {};
-""".format(LOG_DATA, IAM_ROLE, LOG_PATH)
+    FORMAT AS JSON {LOG_PATH};
+"""
 
 
 # Staging Songs Table
@@ -207,11 +206,19 @@ WHERE ts IS NOT NULL;
 """)
 
 # QUERY LISTS
+create_table_queries = [staging_events_table_create, staging_songs_table_create,
+                        songplay_table_create, user_table_create, song_table_create,
+                        artist_table_create, time_table_create]
 
-create_table_queries = [staging_events_table_create, staging_songs_table_create, songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
-
-drop_table_queries = [staging_events_table_drop, staging_songs_table_drop, songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
+drop_table_queries = [staging_events_table_drop, staging_songs_table_drop,
+                      songplay_table_drop, user_table_drop, song_table_drop,
+                      artist_table_drop, time_table_drop]
 
 copy_table_queries = [staging_events_copy, staging_songs_copy]
 
-insert_table_queries = [songplay_table_insert, user_table_insert, song_table_insert, artist_table_insert, time_table_insert]
+insert_table_queries = [songplay_table_insert, user_table_insert,
+                        song_table_insert, artist_table_insert, time_table_insert]
+
+
+
+
