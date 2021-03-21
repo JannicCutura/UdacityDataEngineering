@@ -50,7 +50,7 @@ userId          INTEGER
 staging_events_copy = f"""
     COPY staging_events_table FROM {LOG_DATA}
     CREDENTIALS 'aws_iam_role={IAM_ROLE}'
-    COMPUPDATE OFF region 'us-west-2'
+    COMPUPDATE OFF region 'eu-central-1'
     TIMEFORMAT as 'epochmillisecs'
     TRUNCATECOLUMNS BLANKSASNULL EMPTYASNULL
     FORMAT AS JSON {LOG_PATH};
@@ -73,13 +73,13 @@ CREATE TABLE IF NOT EXISTS staging_songs_table (
 """)
 
 # Copy to Songs table
-staging_songs_copy = """
-    COPY staging_songs_table FROM {}
-    CREDENTIALS 'aws_iam_role={}'
-    COMPUPDATE OFF region 'us-west-2'
+staging_songs_copy = f"""
+    COPY staging_songs_table FROM {SONG_DATA}
+    CREDENTIALS 'aws_iam_role={IAM_ROLE}'
+    COMPUPDATE OFF region 'eu-central-1'
     FORMAT AS JSON 'auto' 
     TRUNCATECOLUMNS BLANKSASNULL EMPTYASNULL;
-""".format(SONG_DATA, IAM_ROLE)
+"""
 
 
 
