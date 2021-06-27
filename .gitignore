@@ -11,7 +11,7 @@
 # config files with keys
 
 dwh.cfg
-**/dl.cfg
+Project\ 4\ --\ Data\ Lakes\ with\ Spark/dl.cfg
 
 # Windows
 Thumbs.db
