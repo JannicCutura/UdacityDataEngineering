@@ -10,7 +10,8 @@
 
 # config files with keys
 *.cfg
-dl.cfg
+**/dl.cfg
+*/dl.cfg
 dwh.cfg
 Project\ 4\ --\ Data\ Lakes\ with\ Spark/dl.cfg
 Project 4 -- Data Lakes with Spark/dl.cfg
