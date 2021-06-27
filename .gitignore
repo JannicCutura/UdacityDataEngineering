@@ -8,6 +8,8 @@
 # Mac/OSX
 .DS_Store
 
+# config files with keys
+*.cfg
 
 # files
 dwh.cfg
