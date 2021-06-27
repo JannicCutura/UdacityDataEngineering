@@ -10,10 +10,8 @@
 
 # config files with keys
 
-
-# files
 dwh.cfg
-Project*4*--*Data*Lakes*with*Spark/dl.cfg
+**/dl.cfg
 
 # Windows
 Thumbs.db
