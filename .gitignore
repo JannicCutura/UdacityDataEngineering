@@ -9,6 +9,7 @@
 .DS_Store
 
 # config files with keys
+*.cfg
 dl.cfg
 dwh.cfg
 Project\ 4\ --\ Data\ Lakes\ with\ Spark/dl.cfg
