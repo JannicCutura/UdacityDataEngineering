@@ -9,6 +9,7 @@
 .DS_Store
 
 # config files with keys
+config_files/*
 *.cfg
 **/dl.cfg
 */dl.cfg
