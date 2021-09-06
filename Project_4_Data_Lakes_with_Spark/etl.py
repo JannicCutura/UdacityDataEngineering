@@ -97,3 +97,16 @@ def etl(output_data='s3a://udacity-data-engineering-nd/data_lakes_with_spark/'):
 
 
 etl()
+
+
+
+import pandas as pd
+
+
+df = pd.read_json("s3://udacity-dend/*")
+
+
+
+
+
+
