@@ -1,3 +1,12 @@
+DROP  TABLE IF EXISTS artists;
+DROP  TABLE IF EXISTS users;
+DROP  TABLE IF EXISTS "time";
+DROP  TABLE IF EXISTS songplays;
+DROP  TABLE IF EXISTS staging_events;
+DROP  TABLE IF EXISTS staging_songs;
+DROP  TABLE IF EXISTS songs;
+
+
 CREATE TABLE public.artists (
 	artistid varchar(256) NOT NULL,
 	name varchar(256),
@@ -73,7 +82,7 @@ CREATE TABLE public."time" (
 	CONSTRAINT time_pkey PRIMARY KEY (start_time)
 );
 
-CREATE TABLE public.users_table (
+CREATE TABLE public.users (
 	userid int4 NOT NULL,
 	first_name varchar(256),
 	last_name varchar(256),

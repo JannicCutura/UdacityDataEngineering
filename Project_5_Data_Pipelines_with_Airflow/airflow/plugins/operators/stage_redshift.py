@@ -32,12 +32,13 @@ class StageToRedshiftOperator(BaseOperator):
 
         s3_path = f"s3://{s3_bucket}/{self.s3_key}"
         
-        redshift.run(f"TRUNCATE {self.table}")
+        #redshift.run(f"TRUNCATE {self.table}")
         
         # COPY 
-        logging.info("COPY table...")  
+        logging.info(f"COPY table from '{s3_path}'")  
         query = f"COPY {self.table} FROM '{s3_path}' ACCESS_KEY_ID '{credentials.access_key}'" \
-                f" SECRET_ACCESS_KEY '{credentials.secret_key}' REGION 'us-west-2'"      
+                f" SECRET_ACCESS_KEY '{credentials.secret_key}' REGION 'us-west-2'" \
+                f" TIMEFORMAT as 'epochmillisecs' TRUNCATECOLUMNS BLANKSASNULL EMPTYASNULL"
         
         if self.json_path != "auto":
             query = query + f" JSON '{self.json_path}' COMPUPDATE OFF"
